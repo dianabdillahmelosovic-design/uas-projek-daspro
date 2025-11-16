@@ -34,6 +34,7 @@ void tampilkanMenu() {
     }
     cout << "=============================\n";
 }
+
 // Menghitung total & menampilkan rincian
 int hitungTotalDanTampil(bool tampilkanRincian = true) {
     int total = 0;
