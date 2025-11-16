@@ -34,3 +34,51 @@ void tampilkanMenu() {
     }
     cout << "=============================\n";
 }
+
+// Menghitung total & menampilkan rincian
+int hitungTotalDanTampil(bool tampilkanRincian = true) {
+    int total = 0;
+
+    if (tampilkanRincian) {
+        cout << "\n=============================\n";
+        cout << "        PESANAN ANDA\n";
+        cout << "=============================\n";
+    }
+
+    for (int i = 0; i < JUMLAH_MENU; i++) {
+        if (jumlahPesanan[i] > 0) {
+            int subtotal = jumlahPesanan[i] * hargaMenu[i];
+
+            if (tampilkanRincian) {
+                cout << "- " << namaMenu[i] << " (" << jumlahPesanan[i] 
+                     << "x) = Rp " << subtotal << endl;
+            }
+
+            total += subtotal;
+        }
+    }
+
+    if (tampilkanRincian) {
+        cout << "-----------------------------\n";
+        cout << "Total Sebelum Diskon : Rp " << total << endl;
+    }
+
+    // Hitung diskon
+    if (total > 100000) {
+        int diskon = total * 10 / 100;
+        total -= diskon;
+
+        if (tampilkanRincian) {
+            cout << "Diskon 10% Diterapkan! (-Rp " << diskon << ")\n";
+        }
+    } else if (tampilkanRincian) {
+        cout << "Maaf, tidak dapat diskon karena total di bawah Rp 100.000.\n";
+    }
+
+    if (tampilkanRincian) {
+        cout << "Total Akhir : Rp " << total << endl;
+        cout << "=============================\n";
+    }
+
+    return total;
+} 
